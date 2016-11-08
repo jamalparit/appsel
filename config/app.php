@@ -168,6 +168,7 @@ return [
          */
 
         Laratrust\LaratrustServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         //
 
