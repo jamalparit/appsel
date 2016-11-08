@@ -45,8 +45,8 @@
                     </div>
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                       <!--Left Side Of Navbar -->
-                       <ul class="nav navbar-nav">
+                     <!--Left Side Of Navbar -->
+                     <ul class="nav navbar-nav">
                         @if (Auth::check())
                         <li><a href="{{ url('/home') }}">Dashboard</a></li>
                         @endif
@@ -86,7 +86,7 @@
             </div>
         </div>
     </nav>
-
+    @include('layouts._flash')
     @yield('content')
 </div>
 
