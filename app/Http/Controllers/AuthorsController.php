@@ -23,7 +23,10 @@ class AuthorsController extends Controller
             return Datatables::of($authors)
             ->addColumn('action', function($author){
                 return view('datatable._action', [
+                    'model' => $author,
+                    'form_url' => route('authors.destroy', $author->id),
                     'edit_url' => route('authors.edit', $author->id),
+                    'confirm_message' => 'Yakin mau menghapus ' . $author->name . '?'
                     ]);
             })->make(true);
         }
@@ -109,6 +112,12 @@ class AuthorsController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+     if(!Author::destroy($id)) return redirect()->back();
+
+     Session::flash("flash_notification", [
+        "level"=>"success",
+        "message"=>"Penulis berhasil dihapus"
+        ]);
+     return redirect()->route('authors.index');
+ }
 }
